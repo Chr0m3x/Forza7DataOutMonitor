@@ -259,6 +259,35 @@ namespace Forza7Telemetry.Monitor.Telemetry
             this.CarPerformanceIndex = BitConverter.ToInt32(rawTelemetryData, 220);
             this.DrivetrainType = BitConverter.ToInt32(rawTelemetryData, 224);
             this.NumCylinders = BitConverter.ToInt32(rawTelemetryData, 228);
+            // v2 data output
+            this.PositionX = BitConverter.ToSingle(rawTelemetryData, 232);
+            this.PositionY = BitConverter.ToSingle(rawTelemetryData, 236);
+            this.PositionZ = BitConverter.ToSingle(rawTelemetryData, 240);
+            this.Speed = BitConverter.ToSingle(rawTelemetryData, 244);
+            this.Power = BitConverter.ToSingle(rawTelemetryData, 248);
+            this.Torque = BitConverter.ToSingle(rawTelemetryData, 252);
+            this.TyreTempFrontLeft = BitConverter.ToSingle(rawTelemetryData, 256);
+            this.TyreTempFrontRight = BitConverter.ToSingle(rawTelemetryData, 260);
+            this.TyreTempRearLeft = BitConverter.ToSingle(rawTelemetryData, 264);
+            this.TyreTempRearRight = BitConverter.ToSingle(rawTelemetryData, 268);
+            this.Boost = BitConverter.ToSingle(rawTelemetryData, 272);
+            this.Fuel = BitConverter.ToSingle(rawTelemetryData, 276);
+            this.DistanceTraveled = BitConverter.ToSingle(rawTelemetryData, 280);
+            this.BestLap = BitConverter.ToSingle(rawTelemetryData, 284);
+            this.LastLap = BitConverter.ToSingle(rawTelemetryData, 288);
+            this.CurrentLap = BitConverter.ToSingle(rawTelemetryData, 292);
+            this.CurrentRaceTime = BitConverter.ToSingle(rawTelemetryData, 296);
+            this.LapNumber = BitConverter.ToUInt16(rawTelemetryData, 300); // 2 bytes
+            // no need to convert as we are only reading a single byte
+            this.RacePosition = rawTelemetryData[302];
+            this.Accel = rawTelemetryData[303];
+            this.Brake = rawTelemetryData[304];
+            this.Clutch = rawTelemetryData[305];
+            this.Handbrake = rawTelemetryData[306];
+            this.Gear = rawTelemetryData[307];
+            this.Steer = rawTelemetryData[308];
+            this.NormalizedDrivingLine = rawTelemetryData[309];
+            this.NormalizedAIBrakeDifference = rawTelemetryData[310];
         }
     }
 }
