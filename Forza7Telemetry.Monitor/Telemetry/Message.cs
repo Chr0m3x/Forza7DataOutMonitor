@@ -196,6 +196,87 @@ namespace Forza7Telemetry.Monitor.Telemetry
 
         [JsonProperty]
         public int NumCylinders { get; set; } //Number of cylinders in the engine
+        // v2 data output
+         [JsonProperty]
+        public float PositionX { get; set; }
+
+        [JsonProperty]
+        public float PositionY { get; set; }
+
+        [JsonProperty]
+        public float PositionZ { get; set; }
+
+        [JsonProperty]
+        public float Speed { get; set; } // speed in metres
+
+        [JsonProperty]
+        public float Power { get; set; } // power in watts
+
+        [JsonProperty]
+        public float Torque { get; set; } // torque in newton metres
+
+        [JsonProperty]
+        public float TyreTempFrontLeft { get; set; }
+
+        [JsonProperty]
+        public float TyreTempFrontRight { get; set; }
+
+        [JsonProperty]
+        public float TyreTempRearLeft { get; set; }
+
+        [JsonProperty]
+        public float TyreTempRearRight { get; set; }
+
+        [JsonProperty]
+        public float Boost { get; set; }
+
+        [JsonProperty]
+        public float Fuel { get; set; }
+
+        [JsonProperty]
+        public float DistanceTraveled { get; set; }
+
+        [JsonProperty]
+        public float BestLap { get; set; }
+
+        [JsonProperty]
+        public float LastLap { get; set; }
+
+        [JsonProperty]
+        public float CurrentLap { get; set; }
+
+        [JsonProperty]
+        public float CurrentRaceTime { get; set; }
+
+        [JsonProperty]
+        public int LapNumber { get; set; }
+
+        [JsonProperty]
+        public int RacePosition { get; set; }
+
+        [JsonProperty]
+        public int Accel { get; set; }
+
+        [JsonProperty]
+        public int Brake { get; set; }
+
+        [JsonProperty]
+        public int Clutch { get; set; }
+
+        [JsonProperty]
+        public int Handbrake { get; set; }
+
+        [JsonProperty]
+        public int Gear { get; set; }
+
+        [JsonProperty]
+        public int Steer { get; set; }
+
+        [JsonProperty]
+        public int NormalizedDrivingLine { get; set; }
+
+        [JsonProperty]
+        public int NormalizedAIBrakeDifference { get; set; }
 
         #endregion
 
@@ -259,6 +340,35 @@ namespace Forza7Telemetry.Monitor.Telemetry
             this.CarPerformanceIndex = BitConverter.ToInt32(rawTelemetryData, 220);
             this.DrivetrainType = BitConverter.ToInt32(rawTelemetryData, 224);
             this.NumCylinders = BitConverter.ToInt32(rawTelemetryData, 228);
+            // v2 data output
+            this.PositionX = BitConverter.ToSingle(rawTelemetryData, 232);
+            this.PositionY = BitConverter.ToSingle(rawTelemetryData, 236);
+            this.PositionZ = BitConverter.ToSingle(rawTelemetryData, 240);
+            this.Speed = BitConverter.ToSingle(rawTelemetryData, 244);
+            this.Power = BitConverter.ToSingle(rawTelemetryData, 248);
+            this.Torque = BitConverter.ToSingle(rawTelemetryData, 252);
+            this.TyreTempFrontLeft = BitConverter.ToSingle(rawTelemetryData, 256);
+            this.TyreTempFrontRight = BitConverter.ToSingle(rawTelemetryData, 260);
+            this.TyreTempRearLeft = BitConverter.ToSingle(rawTelemetryData, 264);
+            this.TyreTempRearRight = BitConverter.ToSingle(rawTelemetryData, 268);
+            this.Boost = BitConverter.ToSingle(rawTelemetryData, 272);
+            this.Fuel = BitConverter.ToSingle(rawTelemetryData, 276);
+            this.DistanceTraveled = BitConverter.ToSingle(rawTelemetryData, 280);
+            this.BestLap = BitConverter.ToSingle(rawTelemetryData, 284);
+            this.LastLap = BitConverter.ToSingle(rawTelemetryData, 288);
+            this.CurrentLap = BitConverter.ToSingle(rawTelemetryData, 292);
+            this.CurrentRaceTime = BitConverter.ToSingle(rawTelemetryData, 296);
+            this.LapNumber = BitConverter.ToUInt16(rawTelemetryData, 298); // 2 bytes
+            // no need to convert as we are only reading a single byte
+            this.RacePosition = rawTelemetryData[299];
+            this.Accel = rawTelemetryData[300];
+            this.Brake = rawTelemetryData[301];
+            this.Clutch = rawTelemetryData[302];
+            this.Handbrake = rawTelemetryData[303];
+            this.Gear = rawTelemetryData[304];
+            this.Steer = rawTelemetryData[305];
+            this.NormalizedDrivingLine = rawTelemetryData[306];
+            this.NormalizedAIBrakeDifference = rawTelemetryData[307];
         }
     }
 }
